@@ -35407,6 +35407,9 @@ def get_courses(
     
     return filtered_courses
 
+from os import getenv
+import uvicorn
+
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run('app.api:app', host="0.0.0.0", port=8000)
+    port = int(getenv("PORT",8000))
+    uvicorn.run("app.api:app",host = "0.0.0.0", port = port, reload = True)
